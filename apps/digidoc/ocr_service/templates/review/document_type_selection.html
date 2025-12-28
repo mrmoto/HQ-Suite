@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Type Selection Review</title>
+    <link rel="stylesheet" href="/static/css/review.css">
+</head>
+<body>
+    <div class="review-container">
+        <div class="canvas-wrapper">
+            <h2>Document Image</h2>
+            <canvas id="review-canvas" width="800" height="1000"></canvas>
+        </div>
+        
+        <div class="review-sidebar">
+            <div class="document-type-selector">
+                <h3>Select Document Type</h3>
+                <select id="document-type-select">
+                    <option value="">-- Select Document Type --</option>
+                    <option value="receipt">Receipt</option>
+                    <option value="contract">Contract</option>
+                    <option value="bid">Bid/Quote</option>
+                    <option value="timecard">Timecard</option>
+                    <option value="change_order">Change Order</option>
+                </select>
+            </div>
+            
+            <div class="template-matches">
+                <h3>Template Matches</h3>
+                <ul id="template-matches-list">
+                    <!-- Populated by JavaScript -->
+                </ul>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="create-new-template" class="btn-primary">Create New Template</button>
+                <button id="continue-review" class="btn-success" disabled>Continue</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/canvas_review.js"></script>
+    <script src="/static/js/document_type_selection.js"></script>
+    <script>
+        // Initialize review UI
+        const imageUrl = '{{ image_url }}';
+        const templateMatches = {{ template_matches|tojson }};
+        
+        const review = new DocumentTypeSelectionReview(
+            'review-canvas',
+            imageUrl,
+            templateMatches
+        );
+    </script>
+</body>
+</html>

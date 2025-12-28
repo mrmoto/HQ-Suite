@@ -1,0 +1,68 @@
+# Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+!*.xcworkspace/xcshareddata/
+*.xcuserdata/
+*.xcscmblueprint
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.xcuserstate
+project.xcworkspace/
+
+# Logs
+*.log
+logs/
+
+# Configuration (may contain secrets)
+# Uncomment if config contains sensitive data:
+# config.yaml
+# *.plist
+
+# Build artifacts
+build/
+DerivedData/
+*.o
+*.a
+*.framework
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Test artifacts
+.swiftpm/xcode/
+.swiftpm/checkouts/
+

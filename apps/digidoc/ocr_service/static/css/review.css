@@ -1,0 +1,180 @@
+/* Canvas Review UI Styles */
+
+.review-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.canvas-wrapper {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
+
+#review-canvas {
+    border: 1px solid #ccc;
+    cursor: crosshair;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.document-type-selector,
+.template-matches,
+.field-editor,
+.action-buttons {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.document-type-selector h3,
+.template-matches h3,
+.field-editor h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+#document-type-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.template-matches ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.template-match {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+}
+
+.template-match:hover {
+    background: #f0f0f0;
+}
+
+.match-info {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.match-confidence {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.select-template {
+    padding: 8px 16px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.select-template:hover {
+    background: #2563eb;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-primary,
+.btn-success {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2563eb;
+}
+
+.btn-success {
+    background: #10b981;
+    color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+    background: #059669;
+}
+
+.btn-success:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.field-box-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.field-box-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field-box-item.selected {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.field-box-label {
+    font-weight: 500;
+}
+
+.field-box-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: #f59e0b;
+    color: white;
+}
+
+.btn-delete {
+    background: #ef4444;
+    color: white;
+}

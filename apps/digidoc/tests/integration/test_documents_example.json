@@ -1,0 +1,13 @@
+{
+  "test_documents": [
+    {
+      "document": "/absolute/path/to/test/document1.png",
+      "expected": "/absolute/path/to/expected/document1_expected.txt"
+    },
+    {
+      "document": "/absolute/path/to/test/document2.png",
+      "expected": "/absolute/path/to/expected/document2_expected.txt"
+    }
+  ]
+}
+

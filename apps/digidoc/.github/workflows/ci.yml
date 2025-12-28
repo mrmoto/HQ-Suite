@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    
+    - name: Cache pip packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements_ocr.txt
+        pip install -r ../../development/requirements-dev.txt
+    
+    - name: Run linting
+      run: |
+        flake8 ocr_service --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 ocr_service --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        black --check ocr_service
+        isort --check-only ocr_service
+    
+    - name: Run security checks
+      run: |
+        bandit -r ocr_service -f json -o bandit-report.json || true
+        safety check --json || true
+    
+    - name: Run tests with coverage
+      env:
+        OCR_DATABASE_URL: sqlite:///./test.db
+        REDIS_URL: redis://localhost:6379/0
+      run: |
+        pytest --cov=ocr_service --cov-report=xml --cov-report=term-missing --cov-report=html
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+    
+    - name: Upload coverage HTML
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: htmlcov/
+
+  migration-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements_ocr.txt
+    
+    - name: Check migrations
+      run: |
+        alembic check || echo "Migration check completed"
+

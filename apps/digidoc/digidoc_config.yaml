@@ -1,0 +1,65 @@
+# DigiDoc Configuration File
+# All configuration values can be overridden by environment variables
+# Pattern: DIGIDOC_<SECTION>_<KEY> (e.g., DIGIDOC_PREPROCESSING_TARGET_DPI)
+
+# 1. Thresholds
+thresholds:
+  auto_match: 0.85          # Auto-process if confidence ≥ this
+  partial_match_min: 0.60   # Partial match range
+  partial_match_max: 0.85
+  ocr_confidence_min: 0.70  # Minimum OCR confidence before LLM fallback
+  llm_accuracy_min: 0.75    # Minimum LLM accuracy for handwriting
+
+# 2. Scoring Weights
+scoring:
+  structural_weight: 0.70   # Structural fingerprint weight
+  feature_weight: 0.20      # Feature detection weight
+  text_weight: 0.10          # Text fallback weight
+  ocr_quality_weight: 0.30
+  field_extraction_weight: 0.40
+  pattern_matching_weight: 0.20
+  data_validation_weight: 0.10
+
+# 3. Preprocessing
+preprocessing:
+  target_dpi: 300
+  denoise_level: "medium"   # Options: low, medium, high
+  binarization_method: "otsu"  # Options: otsu, gaussian
+  deskew_enabled: true
+  border_removal_enabled: true
+
+# 4. File Paths
+# Variable substitution: {storage_base} will be expanded to actual path
+paths:
+  storage_base: "~/Dropbox/Application Data/DigiDoc"
+  queue_directory: "{storage_base}/queue"
+  processed_directory: "{storage_base}/processed"
+  failed_directory: "{storage_base}/failed"
+  templates_directory: "{storage_base}/templates"
+
+# 5. API Endpoints
+api:
+  port: 8001  # DigiDoc API server port (configurable via DIGIDOC_API_PORT env var)
+  enqueue_endpoint: "/api/digidoc/queue"  # RESTful endpoint for Watcher integration
+  auth_required: true  # Zero Trust - API token required (even for localhost)
+  laravel_base_url: "http://127.0.0.1:8000"
+  laravel_complete_endpoint: "/api/digidoc/process-complete"
+  template_sync_endpoint: "/api/digidoc/templates/sync"
+
+# 6. Queue Configuration
+queue:
+  adapter: "rq"  # Options: rq, celery
+  redis_url: "redis://localhost:6379/0"
+  max_retries: 3
+  job_timeout: 300  # seconds
+
+# 7. Database
+database:
+  type: "sqlite"
+  path: "{storage_base}/digidoc.db"
+
+# 8. LLM (Ollama)
+llm:
+  ollama_url: "http://localhost:11434"
+  model: "llama-vision"
+  timeout: 60  # seconds

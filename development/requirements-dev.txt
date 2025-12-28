@@ -1,0 +1,58 @@
+# Construction Suite - Development Dependencies
+# This file contains development tools, testing frameworks, and automation packages
+# used across all apps in the Construction Suite ecosystem.
+#
+# Installation:
+#   pip install -r requirements-dev.txt
+#
+# Usage:
+#   - Install in each app's .venv for development
+#   - These are NOT production dependencies
+#   - Each app should also have its own requirements.txt for app-specific dependencies
+
+# Testing Frameworks
+pytest>=7.4.0
+pytest-cov>=4.1.0          # Coverage reporting
+pytest-mock>=3.11.1        # Mocking utilities
+pytest-asyncio>=0.21.0      # Async test support
+pytest-timeout>=2.1.0      # Test timeout management
+
+# Code Quality & Linting
+black>=23.7.0               # Code formatter
+flake8>=6.1.0               # Linter
+mypy>=1.5.0                 # Type checking
+isort>=5.12.0               # Import sorting
+pylint>=2.17.0              # Additional linting
+
+# Type Stubs (for better type checking)
+types-requests>=2.31.0
+types-PyYAML>=6.0.12
+types-redis>=4.6.0
+
+# Development Tools
+ipython>=8.14.0             # Enhanced Python REPL
+ipdb>=0.13.13               # Enhanced debugger
+pre-commit>=3.3.3           # Git hooks framework
+
+# Documentation
+sphinx>=7.1.0               # Documentation generator
+sphinx-rtd-theme>=1.3.0     # Read the Docs theme
+
+# Security
+bandit>=1.7.5               # Security linter
+safety>=2.3.5               # Dependency vulnerability checker
+
+# Performance & Profiling
+py-spy>=0.3.14              # Sampling profiler
+memory-profiler>=0.61.0     # Memory profiler
+
+# Build & Packaging
+build>=0.10.0               # Build tool
+twine>=4.0.2                # Upload packages to PyPI
+wheel>=0.41.0               # Wheel builder
+
+# Utilities
+python-dotenv>=1.0.0        # Environment variable management
+rich>=13.5.0                # Rich text and beautiful formatting
+click>=8.1.6                # CLI framework
+

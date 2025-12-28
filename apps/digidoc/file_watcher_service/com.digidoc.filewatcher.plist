@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.digidoc.filewatcher</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/scottroberts/Library/CloudStorage/Dropbox/cloud_storage/DigiDoc/file_watcher_service/watcher.py</string>
+    </array>
+    
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <key>KeepAlive</key>
+    <true/>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/scottroberts/Library/CloudStorage/Dropbox/cloud_storage/DigiDoc/logs/file_watcher_digidoc.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/scottroberts/Library/CloudStorage/Dropbox/cloud_storage/DigiDoc/logs/file_watcher_digidoc_error.log</string>
+    
+    <key>WorkingDirectory</key>
+    <string>/Users/scottroberts/Library/CloudStorage/Dropbox/cloud_storage/DigiDoc/file_watcher_service</string>
+    
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>DIGIDOC_SERVICE_URL</key>
+        <string>http://127.0.0.1:5000</string>
+        <key>CALLING_APP_ID</key>
+        <string>construction_suite</string>
+    </dict>
+</dict>
+</plist>

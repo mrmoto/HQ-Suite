@@ -1,0 +1,82 @@
+# Skeleton Development Configuration
+# 
+# This file contains ALL hardcoded test values used during skeleton/Phase 1 development.
+# These values are used instead of production config to enable rapid prototyping and testing.
+#
+# IMPORTANT: When moving from skeleton to production, replace all references to this file
+# with proper config reading from digidoc_config.yaml
+#
+# Organization: Values grouped by process → document → setting
+
+# Process: Receipt Processing
+process_receipt:
+  # Document: Template Matching
+  template_matching:
+    # Hardcoded confidence score when no templates found or matching fails
+    fallback_confidence: 0.85
+    # Whether to use mock template matching (true) or attempt real matching (false)
+    # NOTE: Real structural fingerprint matching is now the default (false = use real matching)
+    # Set to true only for emergency override or testing mock behavior
+    use_mock_matching: false
+    # Mock template name when using fallback or mock matching
+    mock_template_name: "mock_template"
+  
+  # Document: Field Extraction
+  field_extraction:
+    # Whether to use mock extraction (true) or attempt real extraction (false)
+    use_mock_extraction: true
+    # Mock extracted fields
+    mock_fields:
+      total: "0.00"
+      date: "2025-12-23"
+      vendor: "Mock Vendor"
+  
+  # Document: Decision Logic
+  decision_logic:
+    # Auto-match threshold override (if null, uses config.thresholds.auto_match)
+    auto_match_threshold_override: null
+    # Force status (null = use decision logic, "completed"|"review"|"failed" = force status)
+    force_status: null
+
+# Process: Preprocessing
+preprocessing:
+  # Visual Verification
+  visual_verification:
+    # Whether to pause workflow for visual verification
+    enabled: true
+    # Save before/after comparison image
+    save_comparison: true
+    # Open images automatically (macOS only)
+    auto_open_images: false
+    # Wait for user input before continuing (seconds, 0 = wait indefinitely)
+    wait_seconds: 0
+
+# Process: API Integration
+api:
+  # Laravel API calls
+  laravel:
+    # Whether to skip Laravel API calls (true = skip, false = attempt call)
+    skip_laravel_calls: true
+    # Mock response when skipping
+    mock_response:
+      status: "success"
+      message: "Mock Laravel response (skeleton mode)"
+
+# Process: Database
+database:
+  # Queue item status updates
+  status_updates:
+    # Whether to skip database status updates (true = skip, false = update)
+    skip_status_updates: false
+    # Log status updates instead of writing to DB
+    log_only: true
+
+# Process: Error Handling
+error_handling:
+  # Whether to use simplified error handling (true = basic, false = full)
+  simplified: true
+  # Log errors to file instead of database
+  log_to_file: true
+  # Error log file path (relative to storage_base)
+  error_log_path: "logs/skeleton_errors.log"
+

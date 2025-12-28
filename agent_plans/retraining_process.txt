@@ -1,0 +1,30 @@
+3. Efficient retraining on deeper patterns
+Principle: Retrain on principles, not details.
+Efficient retraining process:
+Point to QUICK_CONTEXT.md first (fastest context load)
+"Read QUICK_CONTEXT.md first - it points to everything else"
+Then point to AGENT_TRAINING_GUIDE.md (principles and patterns)
+"Read AGENT_TRAINING_GUIDE.md - especially sections on User Communication Preferences and Common Pitfalls"
+Reference specific sections (don't re-read everything)
+"Focus on: Questions as guidance mechanism (section 4), Planning workflow (section 8), Common pitfalls #6-9"
+Use comparison.txt as a reminder
+"Read logs/AI/comparison.txt to understand what deeper patterns you might miss"
+Pattern from training docs: The training documents are designed to be the retraining mechanism - they capture the systematic approach, not just corrections.
+Recommendation for your workflow
+For this session (planning/discussion):
+Keep exchanges focused on principles
+Reference documents instead of re-explaining
+Delegate execution to other agents
+Update architecture docs immediately when decisions are made
+For execution agents:
+Point them to QUICK_CONTEXT.md + specific slice files
+They don't need full training guide - just the slice file + QUICK_CONTEXT
+Retraining trigger:
+After 2-3 hours of active conversation, or
+When you notice first warning sign, or
+Before starting a new major planning cycle
+Retraining process:
+"Read QUICK_CONTEXT.md"
+"Read AGENT_TRAINING_GUIDE.md sections 4, 8, 10"
+"Read logs/AI/comparison.txt to understand deeper patterns"
+This keeps token usage low while preserving principles.
